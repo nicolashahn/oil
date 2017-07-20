@@ -141,6 +141,10 @@ readonly PREPROC_FLAGS=(
 readonly INCLUDE_PATHS=(-I . -I Include)
 readonly CC=${CC:-cc}  # cc should be on POSIX systems
 
+# Take these from the environment
+readonly CFLAGS=${CFLAGS:-}
+readonly BASE_CFLAGS=''  # TODO: Copy from CPython
+
 build() {
   local out=${1:-$PY27/ovm2}
   local module_init=${2:-$PY27/Modules/config.c}
@@ -183,6 +187,8 @@ build() {
   # of it.
 
   time $CC \
+    ${BASE_CFLAGS} \
+    ${CFLAGS} \
     "${INCLUDE_PATHS[@]}" \
     "${PREPROC_FLAGS[@]}" \
     -D PREFIX="\"$PREFIX\"" \
