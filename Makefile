@@ -191,7 +191,7 @@ _build/oil/bytecode.zip: oil-version.txt \
                          doc/osh-quick-ref-toc.txt
 	{ echo '_build/release-date.txt release-date.txt'; \
   	$(ACTIONS_SH) files-manifest oil-version.txt \
-									               doc/osh-quick-ref-toc.txt; \
+	                             doc/osh-quick-ref-toc.txt; \
 	  cat build/oil-manifest.txt \
 	      _build/oil/app-deps-py.txt \
 	      _build/runpy-deps-py.txt; \
