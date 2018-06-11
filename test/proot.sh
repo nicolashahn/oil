@@ -11,6 +11,12 @@ set -o errexit
 demo() {
   # Wow this is necessary to avoid segfault!
   # https://github.com/proot-me/PRoot/issues/106
+
+  # This is an example of why ptrace is not a good idea!  ptrace interacts
+  # with seccomp.
+
+  # But chroot + setuid apparently isn't secure either?
+
   export PROOT_NO_SECCOMP=1
 
   # 'whoami' shows unknown UID.
